@@ -1,2 +1,2 @@
 # VerySimpleFlaskApp
-This is very simple flask app with bootrstap and JQuery.
+This is very simple flask app with bootstrap and JQuery.
