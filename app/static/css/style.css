@@ -1,0 +1,24 @@
+label {
+  color: #fff;
+}
+body {
+  background: #E6E6FA;
+}
+#title {
+  background: #4169E0;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.frame {
+  width:50%;
+  background: #6495ED;
+  padding: 10px;
+  border-radius: 5px;
+}
+.frame2 {
+  width:50%;
+  background: #b7d7f4;
+  padding: 10px;
+  border-radius: 5px;
+}
