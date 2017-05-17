@@ -14,12 +14,14 @@ class BasicTestCase(unittest.TestCase):
         tester = Person(first_name="Unit", surname="Test")
         db.session.add(tester)
         db.session.commit()
-        self.assertEqual(str(db.session.query(Person).filter_by(first_name="Unit").first()), "<Person 'Test', 'Unit'")
+        self.assertEqual(str(db.session.query(Person).filter_by(
+            first_name="Unit").first()), "<Person 'Test', 'Unit'")
 
     def test_delete_person(self):
         db.session.query(Person).filter_by(first_name="Unit").delete()
         db.session.commit()
-        self.assertEqual(str(db.session.query(Person).filter_by(first_name="Unit").first()), "None")
+        self.assertEqual(str(db.session.query(Person).filter_by(
+            first_name="Unit").first()), "None")
 
 if __name__ == "__main__":
     unittest.main()
