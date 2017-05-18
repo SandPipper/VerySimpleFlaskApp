@@ -10,7 +10,7 @@ class BasicTestCase(unittest.TestCase):
         response = tester.get('/', content_type="html/text")
         self.assertEqual(response.status_code, 200)
 
-    def test_add_user(self):
+    def test_add_person(self):
         tester = Person(first_name="Unit", surname="Test")
         db.session.add(tester)
         db.session.commit()

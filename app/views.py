@@ -1,14 +1,16 @@
 from flask import render_template, session, url_for, request, jsonify
 from .forms import Add_personForm
 from .models import Person
-from app import app, db
+from app import app, db, serializer
 
 
 @app.route('/')
 @app.route('/index')
 def index(title="Index page"):
-    person = Person.query.all()
-    return render_template('index.html', person=person, title=title)
+    persons = Person.query.all()
+    for person in persons:
+        person.id = serializer.dumps(person.id)
+    return render_template('index.html', persons=persons, title=title)
 
 
 @app.route('/new_person')
@@ -35,11 +37,12 @@ def add_new_person():
     return jsonify(data)
 
 
-@app.route('/delete/<persons_id>', methods=['DELETE'])
-def delete_person(persons_id):
+@app.route('/delete/<person_id>', methods=['DELETE'])
+def delete_person(person_id):
     result = {'status': 0, 'message': 'Error'}
     try:
-        db.session.query(Person).filter_by(id=persons_id).delete()
+        person_id  = serializer.loads(person_id)
+        db.session.query(Person).filter_by(id=person_id).delete()
         db.session.commit()
         result = {'status': 1, 'message': 'Person Deleted'}
     except Exception as e:
