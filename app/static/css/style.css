@@ -10,14 +10,19 @@ body {
   padding: 10px;
   border-radius: 5px;
 }
+.results {
+  width: 40%;
+  padding: 10px;
+  border-radius: 5px;
+}
 .frame {
-  width:50%;
+  width: 40%;
   background: #6495ED;
   padding: 10px;
   border-radius: 5px;
 }
 .frame2 {
-  width:50%;
+  width: 50%;
   padding: 10px;
   border-radius: 5px;
 }
