@@ -26,27 +26,32 @@ def not_found_error(error, title="Not found"):
 
 @app.route('/new_person/', methods=['POST'])
 def add_new_person():
-    data = {'status': 0}
+
     form = Add_personForm(request.form)
+    data = {'status': 0, 'message': 'Validate Fail'}
+
     if form.validate_on_submit() and request.method == 'POST':
         person = Person(first_name=request.form['first_name'],
                         surname=request.form['surname'])
         db.session.add(person)
         db.session.commit()
-        data = {'status': 1}
+        data = {'status': 1, 'message': 'Person Added'}
+
     return jsonify(data)
 
 
 @app.route('/delete/<person_id>', methods=['DELETE'])
 def delete_person(person_id):
     result = {'status': 0, 'message': 'Error'}
+
     try:
-        person_id  = serializer.loads(person_id)
+        person_id = serializer.loads(person_id)
         db.session.query(Person).filter_by(id=person_id).delete()
         db.session.commit()
         result = {'status': 1, 'message': 'Person Deleted'}
+
     except Exception as e:
-        print(repr(e))
+        print(e, repr(e))
         result = {'status': 0, 'message': repr(e)}
 
     return jsonify(result)

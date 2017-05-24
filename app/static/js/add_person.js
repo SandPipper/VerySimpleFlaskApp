@@ -4,18 +4,24 @@ $(document).ready(function() {
     var ajax=$.ajax({
       type: "POST",
       data: $("#Add_personForm").serialize(),
-      url: "/new_person/"
+      url: "/new_person/",
+      error: function(error) {
+        console.log(error);
+      }
     }).done(function(data){
       if(data.status === 1) {
-        $("#results").removeClass()
-          .addClass("alert alert-success")
+        $("#results").hide(100)
+          .removeClass()
+          .addClass("alert alert-success results")
           .text("Person is successfuly added!")
-          .show();
-        } else {
-        $("#results").addClass("alert alert-danger")
-          .text("Must be more characters in the fields!")
-          .show();
+          .show(500);
+      } else if(data.status === 0) {
+        $("#results").hide(100)
+          .addClass("alert alert-danger results")
+          .text("Must be from 2 to 20 characters in the fields!")
+          .show(500);
       };
+      console.log(data)
     });
     ajax.fail(function(data){
       console.log('error!');

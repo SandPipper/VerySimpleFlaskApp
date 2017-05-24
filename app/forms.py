@@ -7,6 +7,6 @@ from .models import Person
 class Add_personForm(FlaskForm):
 
     first_name = StringField('first_name', validators=[DataRequired(),
-                             Length(min=2, max=16)])
+                             Length(min=2, max=20)])
     surname = StringField('surname', validators=[DataRequired(),
                           Length(min=2, max=20)])

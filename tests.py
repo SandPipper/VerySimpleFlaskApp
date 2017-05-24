@@ -1,9 +1,14 @@
 import unittest
-from app import app, db
+import json
+from app import app, db, serializer
 from app.models import Person
 
 
 class BasicTestCase(unittest.TestCase):
+
+    def setUp(self):
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
 
     def test_index(self):
         tester = app.test_client(self)
@@ -11,17 +16,20 @@ class BasicTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_add_person(self):
-        tester = Person(first_name="Unit", surname="Test")
-        db.session.add(tester)
-        db.session.commit()
-        self.assertEqual(str(db.session.query(Person).filter_by(
-            first_name="Unit").first()), "<Person 'Test', 'Unit'")
+        tester = app.test_client(self)
+        response = tester.post('/new_person/', data=dict(first_name="Unit",
+                                                         surname="Test"))
+        data = json.loads((response.data).decode('utf-8'))
+        self.assertEqual(data['status'], 1)
 
     def test_delete_person(self):
-        db.session.query(Person).filter_by(first_name="Unit").delete()
-        db.session.commit()
-        self.assertEqual(str(db.session.query(Person).filter_by(
-            first_name="Unit").first()), "None")
+        with app.app_context():
+            person = Person.query.filter_by(first_name="Unit").first()
+            person_id = serializer.dumps(person.id)
+            tester = app.test_client(self)
+            response = tester.delete('/delete/' + person_id)
+            data = json.loads((response.data).decode('utf-8'))
+        self.assertEqual(data['status'], 1)
 
 if __name__ == "__main__":
     unittest.main()
