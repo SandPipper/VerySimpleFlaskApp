@@ -1,3 +1,9 @@
+import 'bootstrap-loader';
+import '../css/style.css';
+import 'jquery';
+import './delete';
+
+
 $(document).ready(function() {
   $("#Add_personForm").bind('submit', function(e) {
     e.preventDefault();
