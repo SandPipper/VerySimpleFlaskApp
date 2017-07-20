@@ -159,10 +159,10 @@ To run unittests execute next in root folder of app:
 A few word about webpack
 ------------------------
 
-If you want change .css or .js files and rebundled it with webpack
+If you want change `.css` or `.js` files and rebundled it with webpack
 install it and use ` webpack -p `
 
-If you will have some problem with noda.js ` sudo apt-get update && sudo apt-get install nodejs-legacy `
+If you will have some problem with node.js ` sudo apt-get update && sudo apt-get install nodejs-legacy `
 And don't forget install all dependences with ` npm i <package_name> `
 
 
