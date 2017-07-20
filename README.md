@@ -6,7 +6,7 @@ Features:
 --------
 
 - Bootstrap 3 with Jquery for frontend
-- MySQl with basic settings
+- MySQL with basic settings
 - Flask-SQLAlchemy with basic Person model
 - Easy database migrations with Flask-Migrate
 - Flask-WTForms for validation of form
