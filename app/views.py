@@ -31,11 +31,14 @@ def add_new_person():
     data = {'status': 0, 'message': 'Validate Fail'}
 
     if form.validate_on_submit() and request.method == 'POST':
-        person = Person(first_name=request.form['first_name'],
-                        surname=request.form['surname'])
-        db.session.add(person)
-        db.session.commit()
-        data = {'status': 1, 'message': 'Person Added'}
+        try:
+            person = Person(first_name=request.form['first_name'],
+                            surname=request.form['surname'])
+            db.session.add(person)
+            db.session.commit()
+            data = {'status': 1, 'message': 'Person Added'}
+        except Exception as e:
+            data = {'status':2, 'message': (e, repr(e))}
 
     return jsonify(data)
 
@@ -51,7 +54,6 @@ def delete_person(person_id):
         result = {'status': 1, 'message': 'Person Deleted'}
 
     except Exception as e:
-        print(e, repr(e))
-        result = {'status': 0, 'message': repr(e)}
+        result = {'status': 0, 'message': (e, repr(e))}
 
     return jsonify(result)

@@ -1,7 +1,9 @@
 import os
-from itsdangerous import URLSafeSerializer
 
-serializer = URLSafeSerializer(os.environ['SECRET_KEY'])
 
-SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
-SECRET_KEY = serializer.dumps(os.environ['SECRET_KEY'])
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{}:{}@localhost/{}?charset=utf8mb4"\
+                          .format(os.environ['USER'],
+                                  os.environ['PASSWORD'],
+                                  os.environ['DB_NAME'])
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+SECRET_KEY = os.environ['SECRET_KEY']

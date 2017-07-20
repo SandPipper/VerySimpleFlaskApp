@@ -2,6 +2,7 @@ from app import app, db
 
 
 class Person(db.Model):
+    __tablename__ = "person"
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(20))
     surname = db.Column(db.String(20))
