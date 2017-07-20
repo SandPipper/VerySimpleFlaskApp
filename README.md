@@ -41,12 +41,12 @@ Create virtual environment for your project:
 
 ` pyvenv-3.5 name_of_your_environment `
 
-Go to activate script in your virtual environment:
+Edit activate script in your virtual environment:
 
-`cd name_of_your_environment/bin `
+`nano name_of_your_environment/bin/activate `
 
 
-Edit it `nano activate` and adding to the end of file your environment variables:
+Adding to the end of file your environment variables:
 
 ```
 export USER="your_mysql_user"
@@ -55,7 +55,7 @@ export DB_NAME="your_db_name"
 export SECRET_KEY = "your_secret_key"
 ```
 
-Now move back to the project home directory and activate your virtual environment:
+Activate your virtual environment:
 
 ` source name_of_your_environment/bin/activate `
 
@@ -76,7 +76,7 @@ sudo apt-get install mysql-server
 ```
 
 
-Initialize data base and start migration script, after that moment flask app on werkzeug server is ready to use:
+Initialize data base and start migration script:
 
 ```
 python migrate.py db init
@@ -93,7 +93,7 @@ To run it with gunicorn use `gunicorn run:app`
 Install and initialize nginx:
 ----------------------------
 
-Install `sudo apt get install nginx`
+Install `sudo apt-get install nginx`
 
 
 Configure it:
