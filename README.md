@@ -46,7 +46,7 @@ Go to activate script in your virtual environment:
 `cd name_of_your_environment/bin `
 
 
-Edit it 'nano activate' and adding to the end of file your environment variables:
+Edit it `nano activate` and adding to the end of file your environment variables:
 
 ```
 export USER="your_mysql_user"
@@ -61,7 +61,7 @@ Now move back to the project home directory and activate your virtual environmen
 
 Install python packages from requirements:
 
-' pip install -r requirements.txt '
+` pip install -r requirements.txt `
 
 
 
@@ -93,7 +93,7 @@ To run it with gunicorn use `gunicorn run:app`
 Install and initialize nginx:
 ----------------------------
 
-Install 'sudo apt get install nginx'
+Install `sudo apt get install nginx`
 
 
 Configure it:
