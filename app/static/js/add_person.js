@@ -22,14 +22,14 @@ $(document).ready(function() {
           .addClass("alert alert-success results")
           .text("Person is successfuly added!")
           .show(500)
-          .slideUp(1000);
+          .slideUp(1250);
 
       } else if(data.status === 0) {
         $("#results").hide(100)
           .addClass("alert alert-danger results")
           .text("Must be from 2 to 20 characters in the fields!")
           .show(500)
-          .slideUp(1000);
+          .slideUp(1250);
       };
 
       console.log(data)
