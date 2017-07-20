@@ -38,7 +38,7 @@ def add_new_person():
             db.session.commit()
             data = {'status': 1, 'message': 'Person Added'}
         except Exception as e:
-            data = {'status':2, 'message': (e, repr(e))}
+            data = {'status': 2, 'message': (e, repr(e))}
 
     return jsonify(data)
 
