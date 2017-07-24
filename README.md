@@ -52,7 +52,7 @@ Adding to the end of file your environment variables:
 export USER="your_mysql_user"
 export PASSWORD="your_mysql_password"
 export DB_NAME="your_db_name"
-export SECRET_KEY = "your_secret_key"
+export SECRET_KEY="your_secret_key"
 ```
 
 Activate your virtual environment:
@@ -160,7 +160,7 @@ A few word about webpack
 ------------------------
 
 If you want change `.css` or `.js` files and rebundled it with webpack
-install it and use ` webpack -p `
+install it `npm install webpack` and use ` webpack -p `
 
 If you will have some problem with node.js ` sudo apt-get update && sudo apt-get install nodejs-legacy `
 And don't forget install all dependences with ` npm i <package_name> `

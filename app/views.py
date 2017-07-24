@@ -54,6 +54,6 @@ def delete_person(person_id):
         result = {'status': 1, 'message': 'Person Deleted'}
 
     except Exception as e:
-        result = {'status': 0, 'message': (e, repr(e))}
+        result = {'status': 0, 'message': repr(e)}
 
     return jsonify(result)

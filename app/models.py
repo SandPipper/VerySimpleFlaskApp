@@ -12,4 +12,4 @@ class Person(db.Model):
                           surname=surname, **kwargs)
 
     def __repr__(self):
-        return '<Person %r, %r' % (self.surname, self.first_name)
+        return '<Person %r, %r>' % (self.surname, self.first_name)
